@@ -1,0 +1,6 @@
+{
+  "name": "Campeonato Intermunicipalidades Satipo 2026",
+  "description": "PWA de mapas interactivos Google Maps, plano oficial en JPG, sedes y rutas de navegación del Campeonato Intermunicipalidades 2026 - Sede Satipo, Junín (18 y 19 de septiembre de 2026).",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

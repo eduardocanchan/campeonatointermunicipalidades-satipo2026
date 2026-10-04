@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* Leaflet Custom Popups and Map Styling */
+.leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
+}
+
+.venue-marker-custom {
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
+}
+
+.user-gps-icon {
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
+}
+
+/* Clean & Stable GPS user indicator for mobile and desktop (prevents canvas/tile flicker) */
+@keyframes gps-pulse-soft {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+}
+
+@keyframes gps-radar-expand {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-gps-soft {
+  animation: gps-pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-gps-radar {
+  animation: gps-radar-expand 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* Google Maps / iOS style GPS Heading Vision Cone */
+.gps-heading-cone {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: -45px;
+  left: -21px;
+  pointer-events: none;
+  transform-origin: 45px 73px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: conic-gradient(from -35deg at 50% 81%, rgba(56, 189, 248, 0) 0deg, rgba(56, 189, 248, 0.35) 35deg, rgba(56, 189, 248, 0) 70deg);
+  border-radius: 50% 50% 0 0;
+}
+
+
+.leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.98) !important;
+  color: #f1f5f9 !important;
+  border-radius: 1rem !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.98) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+  padding: 6px 8px !important;
+  font-size: 15px !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #f1f5f9 !important;
+}
+
+.leaflet-container {
+  font-family: inherit !important;
+  background-color: #0f172a !important;
+  touch-action: none !important;
+  -ms-touch-action: none !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Fluid zoom animation transition for mobile pinch responsiveness */
+.leaflet-zoom-anim .leaflet-zoom-animated {
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Hardware accelerated layer compositing on the map pane only (never on individual tiles) */
+.leaflet-map-pane,
+.leaflet-pane {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Custom Scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
+
+/* Safe area padding for mobile navigation */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
